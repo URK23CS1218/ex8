@@ -7,7 +7,7 @@ services:
     startCommand: npm start
     envVars:
       - key: MONGODB_URI
-        value: mongodb+srv://wtlab_db_user:Jerry%407@cluster0.5gwoosa.mongodb.net/moviebooking?retryWrites=true&w=majority
+        value: mongodb+srv://wtlab_db_user:jerry@cluster0.5gwoosa.mongodb.net/moviebooking?retryWrites=true&w=majority
       - key: NODE_ENV
         value: production
       - key: PORT
