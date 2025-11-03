@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Ticket Booking System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎬 Movie Ticket Booking System</h1>
+            <p>Book your movie tickets online</p>
+        </header>
+
+        <div class="tabs">
+            <button class="tab-button active" onclick="openTab('booking')">New Booking</button>
+            <button class="tab-button" onclick="openTab('view')">View Bookings</button>
+            <button class="tab-button" onclick="openTab('search')">Search Booking</button>
+        </div>
+
+        <!-- Booking Form -->
+        <div id="booking" class="tab-content active">
+            <form id="bookingForm" class="booking-form">
+                <h2>Book Your Tickets</h2>
+                
+                <div class="form-group">
+                    <label for="customerName">Full Name *</label>
+                    <input type="text" id="customerName" name="customerName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="customerEmail">Email *</label>
+                    <input type="email" id="customerEmail" name="customerEmail" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="customerPhone">Phone *</label>
+                    <input type="tel" id="customerPhone" name="customerPhone" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="movieTitle">Movie *</label>
+                    <select id="movieTitle" name="movieTitle" required onchange="updateShowtimes()">
+                        <option value="">Select a movie</option>
+                        <option value="Avengers: Endgame">Avengers: Endgame</option>
+                        <option value="The Batman">The Batman</option>
+                        <option value="Spider-Man: No Way Home">Spider-Man: No Way Home</option>
+                        <option value="Dune: Part Two">Dune: Part Two</option>
+                        <option value="Black Panther">Black Panther</option>
+                        <option value="John Wick 4">John Wick 4</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="movieTime">Show Time *</label>
+                    <select id="movieTime" name="movieTime" required onchange="checkSeatAvailability()">
+                        <option value="">Select show time</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="theater">Theater *</label>
+                    <select id="theater" name="theater" required>
+                        <option value="">Select theater</option>
+                        <option value="PVR Cinemas">PVR Cinemas</option>
+                        <option value="INOX">INOX</option>
+                        <option value="Cinepolis">Cinepolis</option>
+                        <option value="IMAX">IMAX</option>
+                        <option value="MovieMax">MovieMax</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Select Seats * (₹200 per seat)</label>
+                    <div id="seatMap" class="seat-map">
+                        <!-- Seat map will be generated here -->
+                    </div>
+                    <div id="selectedSeats" class="selected-seats"></div>
+                </div>
+
+                <div class="form-group">
+                    <label>Total Amount: ₹<span id="totalAmount">0</span></label>
+                </div>
+
+                <button type="submit" class="btn-primary">Book Tickets</button>
+            </form>
+        </div>
+
+        <!-- View Bookings -->
+        <div id="view" class="tab-content">
+            <h2>All Bookings</h2>
+            <button onclick="loadAllBookings()" class="btn-secondary">Refresh</button>
+            <div id="bookingsList" class="bookings-list"></div>
+        </div>
+
+        <!-- Search Booking -->
+<div id="search" class="tab-content">
+    <h2>Search Booking</h2>
+    
+    <div class="search-form">
+        <div class="form-group">
+            <label for="searchEmail">Email Address</label>
+            <input type="email" id="searchEmail" placeholder="Enter your email">
+        </div>
+        
+        <div class="form-group">
+            <label for="searchReference">Booking Reference</label>
+            <input type="text" id="searchReference" placeholder="Enter booking reference">
+        </div>
+    </div>
+    
+    <div class="search-buttons">
+        <button onclick="searchBookings()" class="btn-primary">Search by Email</button>
+        <button onclick="searchByReference()" class="btn-secondary">Search by Reference</button>
+        <button onclick="searchAll()" class="btn-primary">Search All</button>
+        <button onclick="clearSearchResults()" class="btn-secondary">Clear</button>
+    </div>
+    
+    <div id="searchResults" class="search-results"></div>
+</div>
+
+        <!-- Messages -->
+        <div id="message" class="message"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
