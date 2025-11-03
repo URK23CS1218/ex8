@@ -4,6 +4,7 @@
   "description": "Online Movie Ticket Booking System",
   "main": "server.js",
   "scripts": {
+    "build": "mkdir -p build && cp -r *.html css/ js/ images/ build/ || echo 'Files copied to build'",
     "start": "node server.js",
     "dev": "nodemon server.js",
     "build": "echo 'No build step required for static files'",
